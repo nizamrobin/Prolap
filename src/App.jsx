@@ -12,10 +12,10 @@ function App() {
     setUser(user);
   });
   return (
-    <>
+    <div className="h-dvh overflow-y-clip relative">
       <Navbar />
       {user ? <Chatbox /> : <Welcome />}
-    </>
+    </div>
   );
 }
 

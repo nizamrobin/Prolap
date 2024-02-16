@@ -4,7 +4,11 @@ export default function Signout({ auth }) {
     signOut(auth);
   };
   return (
-    <button type="button" onClick={signOutHandler}>
+    <button
+      type="button"
+      onClick={signOutHandler}
+      className="font-bold tracking-wider uppercase"
+    >
       Sign Out
     </button>
   );

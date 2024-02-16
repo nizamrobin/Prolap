@@ -6,7 +6,10 @@ export default function GoogleAuth({ auth }) {
   return (
     // <>
     //   <h3>Sign in with Google account.</h3>
-    <button onClick={() => signInWithPopup(auth, provider)}>
+    <button
+      onClick={() => signInWithPopup(auth, provider)}
+      className="font-bold tracking-wider uppercase"
+    >
       <img
         src="./src/assets/google-signin.png"
         type="button"
