@@ -1,13 +1,16 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-export default function GoogleAuth({ auth }) {
+export default function GoogleAuth({ auth, addUser }) {
   const provider = new GoogleAuthProvider();
 
   return (
     // <>
     //   <h3>Sign in with Google account.</h3>
     <button
-      onClick={() => signInWithPopup(auth, provider)}
+      onClick={async () => {
+        await signInWithPopup(auth, provider);
+        addUser();
+      }}
       className="font-bold tracking-wider uppercase"
     >
       <img
