@@ -2,10 +2,9 @@ import { auth, db } from "../firebase";
 import Messages from "./Messages";
 import SendMessage from "./SendMessage";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 export default function Chatbox() {
-  const scroll = useRef();
   const [message, setMessage] = useState("");
 
   const sendMessage = async (event) => {
@@ -23,15 +22,22 @@ export default function Chatbox() {
       uid,
     });
     setMessage("");
-    scroll.current.scrollIntoView(true, { behavior: "smooth" });
+  };
+
+  // Method controls scrolling
+  const scrollHandler = (scroll) => {
+    scroll.current?.lastElementChild?.scrollIntoView(true, {
+      behavior: "smooth",
+      block: "end",
+    });
   };
 
   return (
     <div className="h-full top-20 relative">
-      <Messages currentUser={auth.currentUser} ref={scroll} />
+      <Messages currentUser={auth.currentUser} scrollHandler={scrollHandler} />
       <SendMessage
-        sendMessage={sendMessage}
         message={message}
+        sendMessage={sendMessage}
         setMessage={setMessage}
       />
     </div>

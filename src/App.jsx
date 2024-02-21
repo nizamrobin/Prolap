@@ -20,3 +20,8 @@ function App() {
 }
 
 export default App;
+
+
+// Todo: 
+// 1. Welcome page design
+// 
