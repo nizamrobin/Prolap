@@ -8,7 +8,13 @@ import {
 } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
-export default function Messages({ currentUser, scrollHandler }) {
+export default function Messages({
+  currentUser,
+  scrollHandler,
+  msgModifer,
+  deleteMsgHandler,
+  msgId,
+}) {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -50,7 +56,9 @@ export default function Messages({ currentUser, scrollHandler }) {
         {messages.map((item) => {
           return (
             <li
+              id={item.id}
               key={item.id}
+              onClick={(e) => msgModifer(e)}
               className={`px-2 py-1 flex items-end rounded-t-2xl relative max-w-[80%] ${
                 item.uid === currentUser.uid
                   ? "self-end flex-row-reverse"
@@ -72,6 +80,13 @@ export default function Messages({ currentUser, scrollHandler }) {
               >
                 {item.text}
               </p>
+              {msgId === item.id && (
+                <aside>
+                  <button id={item.id} onClick={(e) => deleteMsgHandler(e)}>
+                    Remove
+                  </button>
+                </aside>
+              )}
             </li>
           );
         })}
