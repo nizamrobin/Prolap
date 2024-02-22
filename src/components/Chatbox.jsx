@@ -1,11 +1,18 @@
 import { auth, db } from "../firebase";
 import Messages from "./Messages";
 import SendMessage from "./SendMessage";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  deleteDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 import { useState } from "react";
 
 export default function Chatbox() {
   const [message, setMessage] = useState("");
+  const [msgId, setMsgId] = useState(null);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -21,6 +28,7 @@ export default function Chatbox() {
       createdAt: serverTimestamp(),
       uid,
     });
+    // setmsgModiferOptions(false);
     setMessage("");
   };
 
@@ -32,9 +40,27 @@ export default function Chatbox() {
     });
   };
 
+  // Message Modifier Handler
+  // ***PROBLEM: not hide the options when clicked second time => RESOLVED
+  const msgModifer = (e) => {
+    setMsgId(msgId === e.currentTarget.id ? "" : e.currentTarget.id);
+  };
+
+  // Delete a message
+  const deleteMsgHandler = (e) => {
+    deleteDoc(doc(db, "messages", e.currentTarget.id));
+    setMsgId("");
+  };
+
   return (
     <div className="h-full top-20 relative">
-      <Messages currentUser={auth.currentUser} scrollHandler={scrollHandler} />
+      <Messages
+        currentUser={auth.currentUser}
+        scrollHandler={scrollHandler}
+        msgModifer={msgModifer}
+        deleteMsgHandler={deleteMsgHandler}
+        msgId={msgId}
+      />
       <SendMessage
         message={message}
         sendMessage={sendMessage}
