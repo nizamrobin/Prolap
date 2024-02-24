@@ -50,7 +50,7 @@ export default function Messages({
       </h3>
 
       <ul
-        className="bg-emerald-100 flex flex-col absolute top-12 bottom-28 left-0 right-0 overflow-y-scroll pt-2 pb-8"
+        className="bg-emerald-100 flex flex-col absolute top-12 bottom-44 left-0 right-0 overflow-y-scroll pt-2 pb-8"
         ref={scroll}
       >
         {messages.map((item) => {
