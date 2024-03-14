@@ -12,7 +12,7 @@ export default function GoogleAuth({ auth, addUser }) {
       className="font-bold tracking-wider uppercase"
     >
       <img
-        src="/src/assets/google-signin.png"
+        src="/assets/google-signin.png"
         alt="Sign in with Google"
         type="button"
         className="w-48"
