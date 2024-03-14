@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import GoogleAuth from "../GoogleAuth";
@@ -18,9 +18,11 @@ export default function Navbar() {
     });
   };
 
-  onAuthStateChanged(auth, (user) => {
-    setUser(user);
-  });
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
 
   return (
     <nav className="flex justify-between p-6 bg-emerald-200 tracking-[0.25rem] uppercase">
