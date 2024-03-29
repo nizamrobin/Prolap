@@ -3,7 +3,7 @@ export default function SendMessage({ sendMessage, message, setMessage }) {
     <form
       action="#"
       onSubmit={(event) => sendMessage(event)}
-      className="absolute bottom-20 w-screen flex justify-around"
+      className="absolute bottom-32 w-screen flex justify-around"
     >
       <label htmlFor="messageInput" hidden>
         Enter Message
