@@ -53,7 +53,7 @@ export default function Chatbox() {
   };
 
   return (
-    <div className="h-full top-20 relative">
+    <div className="h-full top-32 relative">
       <Messages
         currentUser={auth.currentUser}
         scrollHandler={scrollHandler}
