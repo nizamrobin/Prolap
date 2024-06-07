@@ -1,11 +1,11 @@
-import { TabPanelContext } from "../App";
+import { TabPanelContext } from "../../App";
 
 export default function Tab({ value }) {
-  console.log(value);
+  // console.log(value);
   return (
     <TabPanelContext.Consumer>
       {(tabDispatch) => (
-        <li key="1">
+        <li key={value}>
           <button
             onClick={(e) => tabDispatch(e.target.value)}
             type="button"

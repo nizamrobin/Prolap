@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { auth, db } from "../firebase";
+import { auth, db } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import GoogleAuth from "../GoogleAuth";
-import Signout from "../Signout";
+import GoogleAuth from "../../GoogleAuth";
+import Signout from "../../Signout";
 import { collection, setDoc, doc } from "firebase/firestore";
 
 export default function Navbar() {
