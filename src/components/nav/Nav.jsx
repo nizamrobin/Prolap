@@ -1,5 +1,5 @@
 import Navbar from "./Navbar";
-import Tabs from "./Tabs";
+import Tabs from "../tab/Tabs";
 
 export default function Nav() {
   return (
