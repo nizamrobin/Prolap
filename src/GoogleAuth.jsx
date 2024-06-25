@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
-export default function GoogleAuth({ auth, addUser }) {
+export default function GoogleAuth({ auth, addUser, content}) {
   const provider = new GoogleAuthProvider();
 
   return (
@@ -11,12 +11,8 @@ export default function GoogleAuth({ auth, addUser }) {
       }}
       className="font-bold tracking-wider uppercase"
     >
-      <img
-        src="/assets/google-signin.png"
-        alt="Sign in with Google"
-        type="button"
-        className="w-48"
-      />
+      {content}
+
     </button>
   );
 }
