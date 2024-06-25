@@ -43,17 +43,17 @@ function App() {
 
   // UI's showed in screen
   return (
-    <div className="h-dvh overflow-y-clip relative">
-      {/* Under development Notice. Need to remove when build is completed */}
+    <div className="h-dvh sm:w-4/5 relative mx-auto">
+      {/* Under development Notice. Need to remove when build is completed
       <h2 className="absolute top-0 right-0 left-0 bg-red-300 text-white text-center font-bold">
         This is under-development
-      </h2>
+      </h2> */}
 
       {/* Nav Component */}
       <Nav />
 
       {/* Main area where components are showed */}
-      <div className="h-4/5 overflow-y-clip">
+      <div className="absolute top-16 bottom-0 w-full flex flex-col justify-center items-center bg-emerald-100 overflow-y-clip">
         <TabPanelContext.Provider value={tabDispatch}>
           {/* Will be displayed only user is logged in */}
           {user && <Tabs />}

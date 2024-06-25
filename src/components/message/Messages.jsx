@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { auth, db } from "../../firebase";
 import {
   collection,
+  getDoc,
+  doc,
   limit,
   onSnapshot,
   orderBy,
@@ -19,33 +21,37 @@ export default function Messages({
   const [messages, setMessages] = useState([]);
   const [messages1, setMessages1] = useState([]);
   const [messages2, setMessages2] = useState([]);
+  const [otherEndUser, setOtherEndUser] = useState("Group Chat");
 
   const scroll = useRef();
 
   // Fetch messages from the db(Collection is dbCollection) and stored in 'messages' state.
   useEffect(() => {
     // Function for fetching messages only for chatbox
-    const fetchChatboxMsgHandler = () => {
+    const fetchChatboxMsgHandler = async () => {
       const q = query(
         collection(db, "messages"),
         orderBy("createdAt", "desc"),
         limit(50)
-      );
-      const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-        const fetchedMessages = [];
-        QuerySnapshot.forEach((doc) => {
-          fetchedMessages.push({ ...doc.data(), id: doc.id });
-        });
-        const sortedMessages = fetchedMessages.sort(
-          (a, b) => a.createdAt - b.createdAt
         );
-        setMessages(sortedMessages);
-      });
-      return () => unsubscribe;
-    };
-
-    // Function for fetching messages only for personal inbox
-    const fetchPersonalMsgHandler = () => {
+        const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
+          const fetchedMessages = [];
+          QuerySnapshot.forEach((doc) => {
+            fetchedMessages.push({ ...doc.data(), id: doc.id });
+            });
+            const sortedMessages = fetchedMessages.sort(
+              (a, b) => a.createdAt - b.createdAt
+              );
+              setMessages(sortedMessages);
+              });
+              return () => unsubscribe;
+              };
+              
+              // Function for fetching messages only for personal inbox
+              const fetchPersonalMsgHandler = async () => {
+                // set Other End user name to otherEndUser state
+      const getOtherEndUserData = await getDoc(doc(db, "users", dbCol));
+    setOtherEndUser(getOtherEndUserData.data().name);
       const q1 = query(
         collection(db, "chats/chat/" + auth.currentUser.uid + dbCol),
         orderBy("createdAt", "desc"),
@@ -98,12 +104,12 @@ export default function Messages({
 
   return (
     <>
-      <h3 className="font-bold tracking-wider uppercase bg-emerald-400 p-4 text-center text-white">
-        Chatbox-{currentUser.displayName}
+      <h3 className="font-bold tracking-wider bg-emerald-200 p-1 text-center text-emerald-600">
+        {otherEndUser}
       </h3>
 
       <ul
-        className="bg-emerald-100 flex flex-col absolute top-12 bottom-44 left-0 right-0 overflow-y-scroll pt-2 pb-8"
+        className="bg-emerald-100 flex flex-col absolute top-8 bottom-20 left-0 right-0 overflow-y-scroll pt-2 pb-8"
         ref={scroll}
       >
         {/* Iterate through 'messages' state and populate message box */}

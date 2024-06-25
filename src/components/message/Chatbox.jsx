@@ -32,7 +32,7 @@ export default function Chatbox({ dbCol }) {
   };
 
   return (
-    <div className="h-full top-32 relative">
+    <div className="h-full w-full top-12 relative">
       <Messages
         dbCol={dbCol}
         currentUser={auth.currentUser}

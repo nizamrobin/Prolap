@@ -25,16 +25,17 @@ export default function Friends() {
     // tabDispatch is used in context consumer that returns data to tabReducer function of App.js. This data helps to identify which panel to show
     <TabPanelContext.Consumer>
       {(tabDispatch) => (
-        <ul className="bg-emerald-100 flex flex-col absolute top-32 bottom-0 left-0 right-0 overflow-y-scroll p-4">
+        <ul className="flex flex-col gap-4 absolute top-12 bottom-0 left-0 right-0 overflow-y-scroll p-4">
           {/* chatbox is the default chat option where every user has access to */}
-          <li key="chatbox">
+          <li key="chatbox" className="flex justify-center py-4 bg-emerald-200">
             <button
+            className="flex gap-2 items-center"
               value="chatbox"
               onClick={() => tabDispatch("chatbox")}
               type="button"
             >
-              <img src="" alt="user image" />
-              <h4>Chatbox</h4>
+              <img className="w-8 rounded-lg" src="assets/group-chat.png" alt="Group Chat Icon" />
+              <h4 className="text-lg">Group Chat</h4>
             </button>
           </li>
 
@@ -44,11 +45,12 @@ export default function Friends() {
               auth.currentUser.uid !== user.id && (
                 <li key={user.id}>
                   <button
+                  className="flex gap-2 items-center"
                     value={user.name}
                     onClick={() => tabDispatch(`${user.id}`)}
                     type="button"
                   >
-                    <img src={user.avatar} alt="user image" />
+                    <img className="w-8 rounded-lg" src={user.avatar} alt="user image" />
                     <h4>{user.name}</h4>
                   </button>
                 </li>

@@ -51,7 +51,7 @@ export default function SendMessage({ dbCol }) {
     <form
       action="#"
       onSubmit={(event) => sendMessage(event)}
-      className="absolute bottom-32 w-screen flex justify-around"
+      className="absolute bottom-12 w-screen flex justify-around"
     >
       <label htmlFor="messageInput" hidden>
         Enter Message
