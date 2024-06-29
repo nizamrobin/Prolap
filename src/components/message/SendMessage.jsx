@@ -66,7 +66,7 @@ export default function SendMessage({ dbCol }) {
         className="flex-1 p-4 focus:outline-none focus:ring focus:ring-[#D9196B] focus:ring-inset"
       />
       <button type="submit" className="p-4 bg-[#D9196B] w-16">
-        <img src="public\assets\send-svgrepo-com.svg" alt="Send Message" />
+        <img src="assets/send-svgrepo-com.svg" alt="Send Message" />
       </button>
     </form>
   );
