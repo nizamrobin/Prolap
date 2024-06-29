@@ -32,7 +32,7 @@ export default function Navbar() {
       {user ? (
         <Signout auth={auth} />
       ) : (
-        <GoogleAuth auth={auth} addUser={addUser} content="sign in" />
+        <GoogleAuth auth={auth} addUser={addUser} content={<img className="w-8" src="assets/login-svgrepo-com.svg" alt="Sign In" />} />
       )}
     </nav>
   );

@@ -109,7 +109,7 @@ export default function Messages({
       </h3>
 
       <ul
-        className="bg-[emerald]-100 flex flex-col absolute top-8 bottom-20 left-0 right-0 overflow-y-scroll pt-2 pb-10"
+        className="bg-[emerald]-100 flex flex-col absolute top-10 bottom-20 left-0 right-0 overflow-y-scroll pt-2 pb-10"
         ref={scroll}
       >
         {/* Iterate through 'messages' state and populate message box */}

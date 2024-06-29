@@ -13,7 +13,7 @@ export default function Signout({ auth }) {
         onClick={signOutHandler}
         className="font-bold tracking-wider uppercase"
         >
-      Sign Out
+      <img className="w-8" src="assets/logout-svgrepo-com.svg" alt="Sign Out" />
     </button>
       )}
       </TabPanelContext.Consumer>

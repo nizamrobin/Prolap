@@ -25,7 +25,7 @@ export default function Friends() {
     // tabDispatch is used in context consumer that returns data to tabReducer function of App.js. This data helps to identify which panel to show
     <TabPanelContext.Consumer>
       {(tabDispatch) => (
-        <ul className="flex flex-col gap-4 absolute top-12 bottom-0 left-0 right-0 overflow-y-scroll p-4">
+        <ul className="flex flex-col gap-4 absolute top-10 bottom-0 left-0 right-0 overflow-y-scroll p-4">
           {/* chatbox is the default chat option where every user has access to */}
           <li key="chatbox" className="flex justify-center py-4 bg-emerald-200">
             <button
