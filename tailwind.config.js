@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "hero-full" : "url('assets/prolap10.PNG')",
+        "hero-full" : "url('assets/prolap10.png')",
       }
     },
   },
