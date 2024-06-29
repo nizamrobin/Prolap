@@ -11,7 +11,7 @@ export default function Navbar() {
   // Create New Users Info in db
    const addUser = async () => {
     const { displayName, photoURL, uid } = auth.currentUser;
-    await setDoc(doc(collection(db, "users"), uid), {
+    await setDoc(doc(db, "users", uid), {
       name: displayName,
       avatar: photoURL,
       uid,
@@ -25,8 +25,10 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex justify-between p-4 bg-emerald-200 tracking-[0.25rem] uppercase">
-      <h1 className="font-bold text-2xl">Bondhu</h1>
+    <nav className="flex justify-between px-4 py-2 bg-emerald-300 border-b-4 border-[#D9196B]">
+      <h1 className="font-bold text-2xl">
+        <img src="assets/prolap8png.png" alt=""  className="w-32"/>
+      </h1>
       {user ? (
         <Signout auth={auth} />
       ) : (

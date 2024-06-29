@@ -104,12 +104,12 @@ export default function Messages({
 
   return (
     <>
-      <h3 className="font-bold tracking-wider bg-emerald-200 p-1 text-center text-emerald-600">
+      <h3 className="font-bold tracking-wider bg-[#D9196B] p-1 text-center text-white">
         {otherEndUser}
       </h3>
 
       <ul
-        className="bg-emerald-100 flex flex-col absolute top-8 bottom-20 left-0 right-0 overflow-y-scroll pt-2 pb-8"
+        className="bg-[emerald]-100 flex flex-col absolute top-8 bottom-20 left-0 right-0 overflow-y-scroll pt-2 pb-10"
         ref={scroll}
       >
         {/* Iterate through 'messages' state and populate message box */}
