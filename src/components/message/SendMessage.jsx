@@ -51,7 +51,7 @@ export default function SendMessage({ dbCol }) {
     <form
       action="#"
       onSubmit={(event) => sendMessage(event)}
-      className="absolute bottom-12 w-screen flex justify-around"
+      className="absolute bottom-12 w-full flex justify-around"
     >
       <label htmlFor="messageInput" hidden>
         Enter Message
@@ -63,10 +63,10 @@ export default function SendMessage({ dbCol }) {
         value={message}
         placeholder="Type message . . ."
         onChange={(e) => setMessage(e.target.value)}
-        className="flex-1 p-4 focus:outline-none focus:ring focus:ring-emerald-400 focus:ring-inset"
+        className="flex-1 p-4 focus:outline-none focus:ring focus:ring-[#D9196B] focus:ring-inset"
       />
-      <button type="submit" className="p-4 bg-emerald-400 text-white">
-        Send
+      <button type="submit" className="p-4 bg-[#D9196B] w-16">
+        <img src="public\assets\send-svgrepo-com.svg" alt="Send Message" />
       </button>
     </form>
   );

@@ -16,34 +16,37 @@ export const TabPanelContext = createContext(null);
 const tabReducer = (tabPanel, action) => {
   switch (action) {
     case "friends": {
-      return (tabPanel = <Friends />);
-    }
-    case "f1": {
-      return (tabPanel = <F1 />);
+      return <Friends />;
     }
     case "chatbox": {
-      return (tabPanel = <Chatbox dbCol="messages" />);
+      return <Chatbox dbCol="messages" />;
     }
     default: {
-      return (tabPanel = <Chatbox dbCol={action} />);
+      return <Chatbox dbCol={action} />;
+
     }
   }
 };
 
 function App() {
   const [user, setUser] = useState(null);
-  const [tabPanel, tabDispatch] = useReducer(tabReducer, "");
+  const [tabPanel, tabDispatch] = useReducer(tabReducer, <Friends />);
 
   // Changes the user state based on login
   useEffect(() => {
+    // set Friendlist as default component after a user logged in. This is used to avoid starting app at the same page from where a user logged out.
+    !user &&  (tabDispatch("friends"));
+    // set a user as current user in user state
     onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-  }, []);
+  }, [user]);
 
   // UI's showed in screen
   return (
-    <div className="h-dvh sm:w-4/5 relative mx-auto">
+    <div className="h-dvh  w-screen bg-emerald-500">
+
+    <div className="h-full relative mx-auto sm:w-4/5 md:w-2/3 lg:w-1/2 xl:w-1/3">
       {/* Under development Notice. Need to remove when build is completed
       <h2 className="absolute top-0 right-0 left-0 bg-red-300 text-white text-center font-bold">
         This is under-development
@@ -61,11 +64,12 @@ function App() {
           {/* user not logged in: Starter page will be showed. 
               user logged in: tabpanel and welcome page will be showed.
               user logged in & any tab button clicked: tabpanel and that clicked tab correspondent panel will be showed.
-            */}
-          {!user ? <Starter /> : tabPanel ? tabPanel : <Welcome />}
+              */}
+          {!user ? <Starter /> : tabPanel }
         </TabPanelContext.Provider>
       </div>
     </div>
+              </div>
   );
 }
 

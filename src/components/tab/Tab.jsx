@@ -10,7 +10,7 @@ export default function Tab({ value }) {
             onClick={(e) => tabDispatch(e.target.value)}
             type="button"
             value={value}
-            className="bg-emerald-200 focus:bg-emerald-300 hover:bg-emerald-300 px-2 py-1 rounded-md capitalize"
+            className="bg-emerald-500 text-white focus:bg-[emerald]-700 hover:bg-emerald-700 px-2 py-1 rounded-md capitalize"
           >
             {value}
           </button>

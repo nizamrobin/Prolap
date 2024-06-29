@@ -19,7 +19,7 @@ export default function Friends() {
       setUserList(usersArr);
     });
     return () => userSnapshot;
-  }, []);
+  }, [userList]);
 
   return (
     // tabDispatch is used in context consumer that returns data to tabReducer function of App.js. This data helps to identify which panel to show
